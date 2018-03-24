@@ -11,7 +11,7 @@ export default [
         path: parentRoute => `${parentRoute}/`,
         exact: true,
         component: generateAsyncRouteComponent({
-          loader: () => Promise.resolve(() => <div> Home </div>),
+          loader: () => Promise.resolve(() => <div> Home Page </div>),
         }),
       },
     ],
