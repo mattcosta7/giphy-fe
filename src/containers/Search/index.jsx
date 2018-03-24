@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addTerm } from '../../actions/SearchActions';
+import hotReload from '../../helpers/hotloader-helper';
 
 class Search extends React.Component {
   componentDidMount() {
@@ -26,4 +27,4 @@ const mapDispatchToProps = {
   addTerm,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default hotReload(module, connect(mapStateToProps, mapDispatchToProps)(Search));

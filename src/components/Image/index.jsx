@@ -11,12 +11,12 @@ export default class Image extends React.Component {
     } = this.props;
 
     return (
-      <LazyLoad once offset={100}>
+      <LazyLoad debounce={300} unmountIfInvisible overflow height={200} offset={300}>
         <div className={classnames(Styles.frame, frameClassName)}>
           <ProgressiveImage src={src} placeholder={placeholder || src}>
             {(imageSrc, loading) => (
               <img
-                className={classnames(loading && Styles.loading, className)}
+                className={classnames(Styles.image, loading && Styles.loading, className)}
                 src={imageSrc}
                 alt={alt}
                 {...restProps}

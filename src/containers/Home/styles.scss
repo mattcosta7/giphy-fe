@@ -1,0 +1,35 @@
+@import "../../scss/variables";
+
+.container {
+  flex-basis: initial;
+  overflow: auto;
+  @media screen and (min-width: map-get($screen-sizes, md)) {
+    flex-basis: 70%;
+  }
+
+  .gif-list {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    padding-left: 0;
+    .gif-list-item {
+      width: 100%;
+
+      @media screen and (min-width: map-get($screen-sizes, xs)) {
+        width: 50%;
+      }
+
+      @media screen and (min-width: map-get($screen-sizes, md)) {
+        width: 33%;
+      }
+
+      @media screen and (min-width: map-get($screen-sizes, lg)) {
+        width: 25%;
+      }
+
+      @media screen and (min-width: map-get($screen-sizes, xl)) {
+        width: 20%;
+      }
+    }
+  }
+}

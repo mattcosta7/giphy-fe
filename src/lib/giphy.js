@@ -38,4 +38,4 @@ function getTrending({
   });
 }
 
-export { search, getTrending };
+export default { search, getTrending };
