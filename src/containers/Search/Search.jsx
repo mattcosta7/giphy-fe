@@ -10,9 +10,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.gifs) {
-      this.props.search({ term: this.props.term, direction: NEXT_DIRECTION });
-    }
+    this.props.search({ term: this.props.term, direction: PREVIOUS_DIRECTION });
   }
 
   handleScroll(e) {

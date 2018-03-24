@@ -15,7 +15,7 @@ export default function Navigation(props) {
       >
         <img alt="logo" src={homeImg} />
       </Link>
-      <ul>
+      <ul className={Styles['nav-list']}>
         <li>
           <NavLink
             to={{
@@ -31,7 +31,7 @@ export default function Navigation(props) {
         {showSearchLinks && (
           <li>
             <h3>Recent Searches</h3>
-            <ul>
+            <ul className={Styles['recent-searches']}>
               {props.searches.map(search => (
                 <li key={search.term}>
                   <NavLink

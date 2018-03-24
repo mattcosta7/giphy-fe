@@ -11,7 +11,7 @@
       right: 2.5rem;
       top: 0.2rem;
     }
-    width: unquote("calc(100% - 4rem)");
+    width: unquote("calc(100% - 2rem)");
 
     &:active,
     &:focus {
@@ -24,10 +24,12 @@
     border: 0;
     position: absolute;
     right: 0;
+    top: 0;
   }
 
   .search-icon {
     left: 100%;
     position: absolute;
+    top: 0;
   }
 }

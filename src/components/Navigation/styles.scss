@@ -1,10 +1,23 @@
+@import "../../scss/variables";
+
 .nav {
-  flex-basis: 25%;
+  display: flex;
+  flex-shrink: 0;
+  padding: 1rem;
   width: 100%;
 
-  ul {
+  @media screen and (min-width: map-get($screen-sizes, md)) {
+    display: initial;
+    flex-basis: 20rem;
+  }
+
+  .nav-list {
     list-style-type: none;
     margin: 0 auto;
     padding-left: 0;
+  }
+
+  .recent-searches {
+    list-style-type: disc;
   }
 }
