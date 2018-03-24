@@ -26,7 +26,6 @@ export function search({ term, direction = NEXT_DIRECTION }) {
   return (dispatch, getState) => {
     const termPagination = getState().pagination.searches[term];
     dispatch(addTerm(term));
-    console.log(termPagination);
     const offset =
       !termPagination || direction === PREVIOUS_DIRECTION
         ? 0

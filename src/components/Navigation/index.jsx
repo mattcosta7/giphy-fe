@@ -33,13 +33,13 @@ export default function Navigation(props) {
             <h3>Recent Searches</h3>
             <ul>
               {props.searches.map(search => (
-                <li key={search}>
+                <li key={search.term}>
                   <NavLink
                     to={{
-                      pathname: `/${search}`,
+                      pathname: `/${search.term}`,
                     }}
                   >
-                    {search}
+                    {search.term} ({search.count})
                   </NavLink>
                 </li>
               ))}

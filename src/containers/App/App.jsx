@@ -22,7 +22,10 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  searches: state.searches,
+  searches: state.searches.map(term => ({
+    term,
+    count: state.pagination.searches[term] ? state.pagination.searches[term].total_count : 0,
+  })),
 });
 
 export default connect(mapStateToProps)(App);
