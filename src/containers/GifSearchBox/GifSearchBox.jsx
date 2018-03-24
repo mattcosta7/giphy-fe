@@ -42,7 +42,7 @@ export default class GifSearchBox extends React.Component {
         term: '',
       },
       () => {
-        this.search(term);
+        this.search({ term });
       }
     );
   }
@@ -59,9 +59,9 @@ export default class GifSearchBox extends React.Component {
     });
   }
 
-  search(term) {
+  search({ term }) {
     this.props
-      .search(term)
+      .search({ term })
       .then(this.resetState)
       .then(() => this.props.history.push(term));
   }

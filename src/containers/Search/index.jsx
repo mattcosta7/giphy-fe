@@ -1,30 +1,22 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { addTerm } from '../../actions/SearchActions';
+import { withRouter } from 'react-router-dom';
+import Search from './Search';
+import { search } from '../../actions/SearchActions';
 import hotReload from '../../helpers/hotloader-helper';
 
-class Search extends React.Component {
-  componentDidMount() {
-    if (!this.props.searchInNav) {
-      this.props.addTerm(this.props.match.params.term);
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <h1> GIF search results for &quot;{this.props.match.params.term}&quot; </h1>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = (state, props) => ({
-  searchInNav: state.searches && state.searches.find(search => search === props.match.params.term),
-});
-
-const mapDispatchToProps = {
-  addTerm,
+const mapStateToProps = (state, props) => {
+  const gifs = state.gifs.searches[props.match.params.term];
+  return {
+    term: props.match.params.term,
+    gifs: gifs && gifs.map(id => state.gifs.byId[id]),
+    offset: state.pagination.trending.offset,
+  };
 };
 
-export default hotReload(module, connect(mapStateToProps, mapDispatchToProps)(Search));
+const mapDispatchToProps = {
+  search,
+};
+
+const SmartSearch = withRouter(connect(mapStateToProps, mapDispatchToProps)(Search));
+
+export default hotReload(module, SmartSearch);

@@ -5,12 +5,14 @@ const HOST = 'https://api.giphy.com';
 const SEARCH_URL = `${HOST}/v1/gifs/search`;
 const TRENDING_URL = `${HOST}/v1/gifs/trending`;
 
-function search(
+function search({
   term,
-  {
-    limit = 25, offset = 0, rating = undefined, lang = 'en', fmt = 'json',
-  } = {}
-) {
+  limit = 25,
+  offset = 0,
+  rating = undefined,
+  lang = 'en',
+  fmt = 'json',
+} = {}) {
   return get(SEARCH_URL, {
     query: {
       api_key: process.env.GIPHY_API_KEY,

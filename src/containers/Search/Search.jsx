@@ -10,22 +10,24 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchTrending();
+    if (!this.props.gifs) {
+      this.props.search({ term: this.props.term, direction: NEXT_DIRECTION });
+    }
   }
 
   handleScroll(e) {
     if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
-      this.props.fetchTrending({ direction: NEXT_DIRECTION });
+      this.props.search({ term: this.props.term, direction: NEXT_DIRECTION });
     } else if (e.target.scrollHeight - e.target.scrollTop === e.target.scrollHeight) {
-      this.props.fetchTrending({ direction: PREVIOUS_DIRECTION });
+      this.props.search({ term: this.props.term, direction: PREVIOUS_DIRECTION });
     }
   }
 
   render() {
     return (
       <div className={Styles.container}>
-        <h1>Trending GIFs</h1>
-        <GifList handleScroll={this.handleScroll} gifs={this.props.trendingGifs} />
+        <h1> GIF search results for &quot;{this.props.term}&quot; </h1>
+        {this.props.gifs && <GifList handleScroll={this.handleScroll} gifs={this.props.gifs} />}
       </div>
     );
   }
