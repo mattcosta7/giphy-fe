@@ -5,7 +5,7 @@ const initialState = [];
 export default function searchesReducer(state = initialState, action) {
   switch (action.type) {
     case NEW_SEARCH:
-      return [action.payload.term, ...state];
+      return [...new Set([action.payload.term, ...state])];
     default:
       return state;
   }

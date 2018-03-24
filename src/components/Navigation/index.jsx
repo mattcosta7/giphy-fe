@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import GifSearchBox from '../../containers/GifSearchBox';
+import Styles from './styles.scss';
 
 export default function Navigation(props) {
   const showSearchLinks = props.searches && props.searches.length > 0;
   return (
-    <nav>
+    <nav className={Styles.nav}>
       <ul>
         <li>
           <NavLink
@@ -16,7 +17,9 @@ export default function Navigation(props) {
             Home
           </NavLink>
         </li>
-        <GifSearchBox />
+        <li>
+          <GifSearchBox />
+        </li>
         {showSearchLinks &&
           props.searches.map(search => (
             <li key={search}>

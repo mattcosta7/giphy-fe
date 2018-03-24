@@ -1,4 +1,3 @@
-import React from 'react';
 import App from '../containers/App';
 import { generateAsyncRouteComponent } from '../helpers/rrv4Helpers';
 
@@ -11,7 +10,13 @@ export default [
         path: parentRoute => `${parentRoute}/`,
         exact: true,
         component: generateAsyncRouteComponent({
-          loader: () => Promise.resolve(() => <div> Home Page </div>),
+          loader: () => import(/* webpackChunkName: "Home" */ '../containers/Home'),
+        }),
+      },
+      {
+        path: parentRoute => `${parentRoute}/:term`,
+        component: generateAsyncRouteComponent({
+          loader: () => import(/* webpackChunkName: "Search" */ '../containers/Search'),
         }),
       },
     ],

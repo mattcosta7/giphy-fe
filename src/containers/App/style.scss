@@ -4,24 +4,28 @@
   @import "~normalize.css";
   @import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i");
 
-  body {
-    font-family: "Lato", sans-serif;
+  html {
+    font-size: 14px;
+    min-height: 100%;
+    min-width: 100%;
   }
 
-  #root {
-    position: relative;
-    overflow: hidden;
+  body {
+    font-family: "Lato", sans-serif;
+    min-height: 100%;
+    min-width: 100%;
   }
 
   a {
     text-decoration: none;
   }
 
-  svg {
-    height: 100%;
-  }
+  #root {
+    display: flex;
+    flex-direction: column;
 
-  ul {
-    list-style: none;
+    @media screen and (min-width: map-get($screen-sizes, md)) {
+      flex-direction: row;
+    }
   }
 }

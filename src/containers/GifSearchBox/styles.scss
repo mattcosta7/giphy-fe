@@ -1,0 +1,33 @@
+.input-container {
+  border-bottom: 0.1rem solid black;
+  display: inline-block;
+  position: relative;
+  width: unquote("calc(100% - 4rem)");
+
+  .input {
+    border: none;
+    padding: {
+      bottom: 0.2rem;
+      right: 2.5rem;
+      top: 0.2rem;
+    }
+    width: unquote("calc(100% - 4rem)");
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .clear-icon {
+    background: none;
+    border: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  .search-icon {
+    left: 100%;
+    position: absolute;
+  }
+}
