@@ -1,0 +1,16 @@
+{
+  "env": {
+    "development": {
+      "presets": [["airbnb", { "modules": false }]],
+      "plugins": ["react-hot-loader/babel", "syntax-dynamic-import"]
+    },
+    "test": {
+      "presets": [["airbnb"]],
+      "plugins": ["react-hot-loader/babel", "syntax-dynamic-import"]
+    },
+    "production": {
+      "presets": [["airbnb", { "modules": false }]],
+      "plugins": ["react-hot-loader/babel", "syntax-dynamic-import"]
+    }
+  }
+}
