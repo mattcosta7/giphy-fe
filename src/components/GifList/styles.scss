@@ -5,6 +5,10 @@
   flex-flow: row wrap;
   list-style: none;
   padding-left: 0;
+  overflow: auto;
+  height: calc(100% - 4rem);
+  margin: 1rem;
+
   .gif-list-item {
     width: 100%;
 

@@ -3,7 +3,7 @@ import { renderRoutes } from 'react-router-config';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import Navigation from '../../components/Navigation';
-import Styles from './style.scss';
+import './style.scss';
 
 class App extends React.Component {
   render() {

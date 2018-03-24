@@ -11,7 +11,7 @@ export default class Image extends React.Component {
     } = this.props;
 
     return (
-      <LazyLoad throttle={300} unmountIfInvisible overflow height={200} offset={300}>
+      <LazyLoad throttle={300} once overflow height={200} offset={300}>
         <div className={classnames(Styles.frame, frameClassName)}>
           <ProgressiveImage src={src} placeholder={placeholder || src}>
             {(imageSrc, loading) => (

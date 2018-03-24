@@ -14,13 +14,13 @@ export function fetchedTrending(data) {
   };
 }
 
-export function fetchTrending() {
+export function fetchTrending({ direction = 'next' } = {}) {
   return (dispatch, getState) => {
-    // const trendingPagination = getState().pagination.trending;
-    // console.log(trendingPagination);
+    const trendingPagination = getState().pagination.trending;
     dispatch(fetchingTrending());
-    Giphy.getTrending().then((res) => {
-      console.log(res);
+    const offset = direction === 'prev' ? 0 : trendingPagination.offset + trendingPagination.count;
+
+    return Giphy.getTrending({ offset }).then((res) => {
       dispatch(fetchedTrending(res));
     });
   };
