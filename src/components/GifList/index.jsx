@@ -10,8 +10,9 @@ export default class GifList extends React.Component {
           <li className={Styles['gif-list-item']} key={gif.id}>
             <Image
               src={gif.images.fixed_height.url}
-              placeholder={gif.images.fixed_height_downsampled.url}
+              placeholder={gif.images.preview_gif.url}
               height={200}
+              alt={gif.title || gif.slug}
             />
           </li>
         ))}

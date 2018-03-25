@@ -44,6 +44,9 @@
 
     a {
       color: grey;
+      &:hover {
+        color: lightgray;
+      }
     }
     :global(a.active) {
       color: black;
