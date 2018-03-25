@@ -2,7 +2,9 @@ import React from 'react';
 import { renderRoutes } from 'react-router-config';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import classnames from 'classnames';
 import Navigation from '../../components/Navigation';
+import GifSeachBox from '../GifSearchBox';
 import Styles from './style.scss';
 import { toggleShowNavMenu } from '../../actions/AppActions';
 
@@ -20,12 +22,21 @@ class App extends React.Component {
           showNavMenu={this.props.showNavMenu}
           searches={this.props.searches}
         />
-        <div>
+        <div className={Styles.container}>
           <button className={Styles['menu-button']} onClick={this.props.toggleShowNavMenu}>
-            <span role="img" aria-label="toggle-menu">
-              &#9776;
-            </span>
+            {this.props.showNavMenu ? (
+              <span role="img" aria-label="toggle-menu">
+                &#x2715;
+              </span>
+            ) : (
+              <span role="img" aria-label="toggle-menu">
+                &#x2630;
+              </span>
+            )}
           </button>
+          <GifSeachBox
+            className={classnames(Styles['search-box'], this.props.showNavMenu && Styles.hide)}
+          />
           {renderRoutes(this.props.route.routes)}
         </div>
       </React.Fragment>

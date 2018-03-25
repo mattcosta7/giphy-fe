@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import GifList from '../../components/GifList';
 import { NEXT_DIRECTION, PREVIOUS_DIRECTION } from '../../constants/SearchDirectionConstants';
 import Styles from './styles.scss';
@@ -25,6 +26,9 @@ export default class Home extends React.Component {
     const isLoading = this.props.loading && this.props.gifs.length === 0;
     return (
       <div className={Styles.container}>
+        <Helmet>
+          <title>Trending</title>
+        </Helmet>
         <h1>Trending GIFs</h1>
         {isLoading ? (
           'loading'

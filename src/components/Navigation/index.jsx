@@ -9,11 +9,6 @@ export default function Navigation(props) {
   const showSearchLinks = props.searches && props.searches.length > 0;
   return (
     <nav className={classnames(Styles.nav, props.showNavMenu && Styles.show)}>
-      <button className={Styles['menu-toggle']} onClick={props.toggleShowMenu}>
-        <span role="img" aria-label="toggle-menu">
-          &#9776;
-        </span>
-      </button>
       <Link
         to={{
           pathname: '/',

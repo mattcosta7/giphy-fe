@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import Styles from './styles.scss';
 
 const initialState = {
@@ -68,7 +69,7 @@ export default class GifSearchBox extends React.Component {
 
   render() {
     return (
-      <div className={Styles['input-container']}>
+      <div className={classnames(Styles['input-container'], this.props.className)}>
         <input
           className={Styles.input}
           onChange={this.handleChange}

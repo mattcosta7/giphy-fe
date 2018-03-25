@@ -2,10 +2,10 @@
 
 .nav {
   background: white;
+  border-right: 1px solid grey;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 1rem;
   position: absolute;
   right: 100%;
   width: 100%;
@@ -36,7 +36,7 @@
     height: 100%;
     list-style-type: none;
     margin: 0 auto;
-    padding-left: 0;
+    padding: 1rem;
     width: 100%;
 
     li {
@@ -73,6 +73,17 @@
   }
 
   .menu-toggle {
+    background: transparent;
+    border: 0;
+    height: 3rem;
+    position: absolute;
+    right: 1rem;
+    width: 3rem;
+
+    &:focus {
+      outline: none;
+    }
+
     @media screen and (min-width: map-get($screen-sizes, md)) {
       display: none;
     }

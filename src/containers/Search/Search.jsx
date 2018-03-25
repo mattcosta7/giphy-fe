@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import GifList from '../../components/GifList';
 import { NEXT_DIRECTION, PREVIOUS_DIRECTION } from '../../constants/SearchDirectionConstants';
 import Styles from './styles.scss';
@@ -34,6 +35,9 @@ class Search extends React.Component {
 
     return (
       <div className={Styles.container}>
+        <Helmet>
+          <title>Search | {this.props.term}</title>
+        </Helmet>
         <h1>
           Showing {this.props.gifs.length} of {this.props.totalCount} search results for &quot;{
             this.props.term
