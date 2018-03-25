@@ -27,3 +27,9 @@
     width: 100%;
   }
 }
+
+.menu-button {
+  @media screen and (min-width: map-get($screen-sizes, md)) {
+    display: none;
+  }
+}

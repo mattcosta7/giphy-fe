@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import classnames from 'classnames';
 import GifSearchBox from '../../containers/GifSearchBox';
 import homeImg from '../../assets/favicon/giphy.gif';
 import Styles from './styles.scss';
@@ -7,11 +8,17 @@ import Styles from './styles.scss';
 export default function Navigation(props) {
   const showSearchLinks = props.searches && props.searches.length > 0;
   return (
-    <nav className={Styles.nav}>
+    <nav className={classnames(Styles.nav, props.showNavMenu && Styles.show)}>
+      <button className={Styles['menu-toggle']} onClick={props.toggleShowMenu}>
+        <span role="img" aria-label="toggle-menu">
+          &#9776;
+        </span>
+      </button>
       <Link
         to={{
           pathname: '/',
         }}
+        onClick={props.toggleShowMenu}
       >
         <img alt="logo" src={homeImg} />
       </Link>
@@ -21,6 +28,7 @@ export default function Navigation(props) {
             to={{
               pathname: '/',
             }}
+            onClick={props.toggleShowMenu}
           >
             Trending
           </NavLink>
@@ -39,6 +47,7 @@ export default function Navigation(props) {
                       to={{
                         pathname: `/${search.term}`,
                       }}
+                      onClick={props.toggleShowMenu}
                     >
                       {search.term} ({search.count})
                     </NavLink>

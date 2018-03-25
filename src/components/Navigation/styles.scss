@@ -1,14 +1,33 @@
 @import "../../scss/variables";
 
 .nav {
+  background: white;
   display: flex;
   flex-direction: column;
+  height: 100%;
   padding: 1rem;
+  position: absolute;
+  right: 100%;
   width: 100%;
+  transform: translate3d(0, 0, 0);
 
   @media screen and (min-width: map-get($screen-sizes, md)) {
     flex-basis: 20rem;
     flex-shrink: 0;
+    position: initial;
+    right: initial;
+    left: 0;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.3s;
+  }
+
+  &.show {
+    transform: translate3d(100%, 0, 0);
+    transition: transform 0.3s;
+
+    @media screen and (min-width: map-get($screen-sizes, md)) {
+      transform: translate3d(0, 0, 0);
+    }
   }
 
   .nav-list {
@@ -50,6 +69,12 @@
     }
     :global(a.active) {
       color: black;
+    }
+  }
+
+  .menu-toggle {
+    @media screen and (min-width: map-get($screen-sizes, md)) {
+      display: none;
     }
   }
 }
