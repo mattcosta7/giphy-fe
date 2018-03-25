@@ -22,29 +22,31 @@ export default function Navigation(props) {
               pathname: '/',
             }}
           >
-            Home
+            Trending
           </NavLink>
         </li>
         <li>
           <GifSearchBox />
         </li>
         {showSearchLinks && (
-          <li>
+          <React.Fragment>
             <h3>Recent Searches</h3>
-            <ul className={Styles['recent-searches']}>
-              {props.searches.map(search => (
-                <li key={search.term}>
-                  <NavLink
-                    to={{
-                      pathname: `/${search.term}`,
-                    }}
-                  >
-                    {search.term} ({search.count})
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </li>
+            <li className={Styles['recent-searches-container']}>
+              <ul className={Styles['recent-searches']}>
+                {props.searches.map(search => (
+                  <li key={search.term}>
+                    <NavLink
+                      to={{
+                        pathname: `/${search.term}`,
+                      }}
+                    >
+                      {search.term} ({search.count})
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          </React.Fragment>
         )}
       </ul>
     </nav>

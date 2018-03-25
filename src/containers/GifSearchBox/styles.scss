@@ -1,9 +1,8 @@
 .input-container {
-  border-bottom: 0.1rem solid black;
+  border-bottom: 1px solid black;
   display: inline-block;
   position: relative;
   width: unquote("calc(100% - 4rem)");
-
   .input {
     border: none;
     padding: {
@@ -12,13 +11,11 @@
       top: 0.2rem;
     }
     width: unquote("calc(100% - 2rem)");
-
     &:active,
     &:focus {
       outline: none;
     }
   }
-
   .clear-icon {
     background: none;
     border: 0;
@@ -26,7 +23,6 @@
     right: 0;
     top: 0;
   }
-
   .search-icon {
     left: 100%;
     position: absolute;

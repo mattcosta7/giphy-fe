@@ -3,16 +3,16 @@
 .gif-list {
   display: flex;
   flex-flow: row wrap;
-  list-style: none;
-  padding-left: 0;
-  overflow: auto;
   height: calc(100% - 4rem);
-  margin: 1rem;
+  list-style: none;
+  overflow: auto;
+  padding-left: 0;
+  width: 100%;
 
   .gif-list-item {
     width: 100%;
 
-    @media screen and (min-width: map-get($screen-sizes, xs)) {
+    @media screen and (min-width: map-get($screen-sizes, sm)) {
       width: 50%;
     }
 
