@@ -6,9 +6,11 @@ import hotReload from '../../helpers/hotloader-helper';
 
 const mapStateToProps = (state, props) => {
   const gifs = state.gifs.searches[props.match.params.term];
+
   return {
+    loading: state.loading.searches[props.match.params.term],
     term: props.match.params.term,
-    gifs: gifs && gifs.map(id => state.gifs.byId[id]),
+    gifs: gifs ? gifs.map(id => state.gifs.byId[id]) : [],
     offset: state.pagination.trending.offset,
   };
 };

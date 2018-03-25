@@ -10,7 +10,15 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.search({ term: this.props.term, direction: PREVIOUS_DIRECTION });
+    if (!this.props.loading) {
+      this.props.search({ term: this.props.term, direction: PREVIOUS_DIRECTION });
+    }
+  }
+
+  componentDidUpdate(lastProps) {
+    if (lastProps.term !== this.props.term && !this.props.loading) {
+      this.props.search({ term: this.props.term, direction: PREVIOUS_DIRECTION });
+    }
   }
 
   handleScroll(e) {
@@ -22,10 +30,16 @@ export default class Home extends React.Component {
   }
 
   render() {
+    const isLoading = this.props.loading && (!this.props.gifs || this.props.gifs.length === 0);
+
     return (
       <div className={Styles.container}>
         <h1> GIF search results for &quot;{this.props.term}&quot; </h1>
-        {this.props.gifs && <GifList handleScroll={this.handleScroll} gifs={this.props.gifs} />}
+        {isLoading ? (
+          'loading'
+        ) : (
+          <GifList handleScroll={this.handleScroll} gifs={this.props.gifs} />
+        )}
       </div>
     );
   }

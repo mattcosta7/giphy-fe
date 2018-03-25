@@ -1,5 +1,7 @@
 @import "../../scss/variables";
 
 .container {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }

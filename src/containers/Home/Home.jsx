@@ -22,10 +22,15 @@ export default class Home extends React.Component {
   }
 
   render() {
+    const isLoading = this.props.loading && this.props.gifs.length === 0;
     return (
       <div className={Styles.container}>
         <h1>Trending GIFs</h1>
-        <GifList handleScroll={this.handleScroll} gifs={this.props.trendingGifs} />
+        {isLoading ? (
+          'loading'
+        ) : (
+          <GifList handleScroll={this.handleScroll} gifs={this.props.gifs} />
+        )}
       </div>
     );
   }

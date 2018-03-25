@@ -5,8 +5,9 @@ import { fetchTrending } from '../../actions/TrendingActions';
 import hotReload from '../../helpers/hotloader-helper';
 
 const mapStateToProps = state => ({
-  trendingGifs: state.gifs.trending.map(id => state.gifs.byId[id]),
+  gifs: state.gifs.trending.map(id => state.gifs.byId[id]),
   offset: state.pagination.trending.offset,
+  loading: state.loading.trending,
 });
 const mapDispatchToProps = {
   fetchTrending,
