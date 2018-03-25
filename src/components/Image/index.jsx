@@ -22,9 +22,9 @@ export default class Image extends React.Component {
       >
         <div className={classnames(Styles.frame, frameClassName)}>
           <ProgressiveImage src={src} placeholder={placeholder || src}>
-            {(imageSrc, loading) => (
+            {imageSrc => (
               <img
-                className={classnames(Styles.image, loading && Styles.loading, className)}
+                className={classnames(Styles.image, className)}
                 src={imageSrc}
                 alt={alt}
                 {...restProps}

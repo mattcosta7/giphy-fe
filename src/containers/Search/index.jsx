@@ -9,9 +9,14 @@ const mapStateToProps = (state, props) => {
 
   return {
     loading: state.loading.searches[props.match.params.term],
+    totalCount:
+      state.pagination.searches[props.match.params.term] &&
+      state.pagination.searches[props.match.params.term].total_count,
     term: props.match.params.term,
     gifs: gifs ? gifs.map(id => state.gifs.byId[id]) : [],
-    offset: state.pagination.trending.offset,
+    offset:
+      state.pagination.searches[props.match.params.term] &&
+      state.pagination.searches[props.match.params.term].offset,
   };
 };
 

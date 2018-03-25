@@ -3,7 +3,7 @@ import GifList from '../../components/GifList';
 import { NEXT_DIRECTION, PREVIOUS_DIRECTION } from '../../constants/SearchDirectionConstants';
 import Styles from './styles.scss';
 
-export default class Home extends React.Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
@@ -34,7 +34,11 @@ export default class Home extends React.Component {
 
     return (
       <div className={Styles.container}>
-        <h1> GIF search results for &quot;{this.props.term}&quot; </h1>
+        <h1>
+          Showing {this.props.gifs.length} of {this.props.totalCount} search results for &quot;{
+            this.props.term
+          }&quot;
+        </h1>
         {isLoading ? (
           'loading'
         ) : (
@@ -44,3 +48,10 @@ export default class Home extends React.Component {
     );
   }
 }
+
+Search.defaultProps = {
+  gifs: [],
+  totalCount: 0,
+};
+
+export default Search;
