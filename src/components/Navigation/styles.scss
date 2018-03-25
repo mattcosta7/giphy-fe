@@ -10,6 +10,7 @@
   right: 100%;
   width: 100%;
   transform: translate3d(0, 0, 0);
+  transition: transform 0.3s;
 
   @media screen and (min-width: map-get($screen-sizes, md)) {
     flex-basis: 20rem;
