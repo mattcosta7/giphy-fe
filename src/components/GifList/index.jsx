@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from '../../components/Image';
 import Styles from './styles.scss';
 
-export default class GifList extends React.Component {
+class GifList extends React.Component {
   render() {
     return (
       <ul onScroll={this.props.handleScroll} className={Styles['gif-list']}>
@@ -20,3 +21,10 @@ export default class GifList extends React.Component {
     );
   }
 }
+
+GifList.propTypes = {
+  handleScroll: PropTypes.func.isRequired,
+  gifs: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
+
+export default GifList;

@@ -1,8 +1,9 @@
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const { NODE_ENV } = require('../../config');
 const path = require('path');
 
 module.exports = new WebpackPwaManifest({
-  publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
+  publicPath: NODE_ENV === 'production' ? '/' : '/',
   filename: 'manifest.json',
   name: 'Giphinator',
   short_name: 'Giphinator',

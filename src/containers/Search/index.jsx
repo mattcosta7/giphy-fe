@@ -14,9 +14,6 @@ const mapStateToProps = (state, props) => {
       state.pagination.searches[props.match.params.term].total_count,
     term: props.match.params.term,
     gifs: gifs ? gifs.map(id => state.gifs.byId[id]) : [],
-    offset:
-      state.pagination.searches[props.match.params.term] &&
-      state.pagination.searches[props.match.params.term].offset,
   };
 };
 

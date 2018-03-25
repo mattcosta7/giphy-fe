@@ -10,7 +10,7 @@ export default [
         path: parentRoute => `${parentRoute}/`,
         exact: true,
         component: generateAsyncRouteComponent({
-          loader: () => import(/* webpackChunkName: "Home" */ '../containers/Home'),
+          loader: () => import(/* webpackChunkName: "Trending" */ '../containers/Trending'),
         }),
       },
       {

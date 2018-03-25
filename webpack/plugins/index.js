@@ -1,14 +1,14 @@
 const webpack = require('webpack');
-const { extractPluginMaker } = require('./extract-text-plugin');
-const { StatsWriterPlugin } = require('webpack-stats-plugin');
-const pwaManifest = require('./pwa-manifest');
-const { CLIENT_PORT, NODE_ENV, GIPHY_API_KEY } = require('../../config');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const CssoWebpackPlugin = require('csso-webpack-plugin').default;
 const CompressionPlugin = require('compression-webpack-plugin');
 const FaviconPlugin = require('favicons-webpack-plugin');
+const { extractPluginMaker } = require('./extract-text-plugin');
+const { StatsWriterPlugin } = require('webpack-stats-plugin');
+const pwaManifest = require('./pwa-manifest');
+const { CLIENT_PORT, NODE_ENV, GIPHY_API_KEY } = require('../../config');
 
 const pluginSets = {
   client: {
@@ -159,7 +159,7 @@ const pluginSets = {
 };
 
 module.exports = (type) => {
-  const env = process.env.NODE_ENV || 'development';
+  const env = NODE_ENV || 'development';
   if (!pluginSets[type]) {
     throw new Error('Invalid type for plugin set');
   } else if (!pluginSets[type][env]) {

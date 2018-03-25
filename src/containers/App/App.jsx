@@ -1,12 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { renderRoutes } from 'react-router-config';
-import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import classnames from 'classnames';
 import Navigation from '../../components/Navigation';
 import GifSeachBox from '../GifSearchBox';
 import Styles from './style.scss';
-import { toggleShowNavMenu } from '../../actions/AppActions';
 
 class App extends React.Component {
   render() {
@@ -21,6 +20,7 @@ class App extends React.Component {
           toggleShowMenu={this.props.toggleShowNavMenu}
           showNavMenu={this.props.showNavMenu}
           searches={this.props.searches}
+          closeNavMenu={this.props.closeNavMenu}
         />
         <div className={Styles.container}>
           <button className={Styles['menu-button']} onClick={this.props.toggleShowNavMenu}>
@@ -44,16 +44,17 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  searches: state.searches.map(term => ({
-    term,
-    count: state.pagination.searches[term] ? state.pagination.searches[term].total_count : 0,
-  })),
-  showNavMenu: state.app.showNavMenu,
-});
-
-const mapDispatchToProps = {
-  toggleShowNavMenu,
+App.propTypes = {
+  toggleShowNavMenu: PropTypes.func.isRequired,
+  showNavMenu: PropTypes.bool.isRequired,
+  searches: PropTypes.arrayOf(PropTypes.shape({
+    term: PropTypes.string,
+    count: PropTypes.number,
+  })).isRequired,
+  closeNavMenu: PropTypes.func.isRequired,
+  route: PropTypes.shape({
+    routes: PropTypes.arrayOf(PropTypes.shape()),
+  }).isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

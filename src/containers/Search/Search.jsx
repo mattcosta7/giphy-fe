@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import GifList from '../../components/GifList';
 import { NEXT_DIRECTION, PREVIOUS_DIRECTION } from '../../constants/SearchDirectionConstants';
@@ -56,6 +57,15 @@ class Search extends React.Component {
 Search.defaultProps = {
   gifs: [],
   totalCount: 0,
+  loading: false,
+};
+
+Search.propTypes = {
+  loading: PropTypes.bool,
+  totalCount: PropTypes.number,
+  term: PropTypes.string.isRequired,
+  gifs: PropTypes.arrayOf(PropTypes.shape()),
+  search: PropTypes.func.isRequired,
 };
 
 export default Search;

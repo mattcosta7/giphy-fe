@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Styles from './styles.scss';
 
@@ -7,7 +8,7 @@ const initialState = {
   term: '',
 };
 
-export default class GifSearchBox extends React.Component {
+class GifSearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -77,7 +78,7 @@ export default class GifSearchBox extends React.Component {
           value={this.state.term}
           disabled={this.state.submitting}
           onKeyUp={this.handleKeyUp}
-          placeholder="Search Giphy"
+          placeholder="Search GIFs"
         />
         {this.state.term.trim() && (
           <button className={Styles['clear-icon']} type="button" onClick={this.clearTerm}>
@@ -100,3 +101,11 @@ export default class GifSearchBox extends React.Component {
     );
   }
 }
+
+GifSearchBox.propTypes = {
+  search: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
+export default GifSearchBox;

@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import GifList from '../../components/GifList';
 import { NEXT_DIRECTION, PREVIOUS_DIRECTION } from '../../constants/SearchDirectionConstants';
 import Styles from './styles.scss';
 
-export default class Home extends React.Component {
+class Trending extends React.Component {
   constructor(props) {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
@@ -39,3 +40,11 @@ export default class Home extends React.Component {
     );
   }
 }
+
+Trending.propTypes = {
+  fetchTrending: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  gifs: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
+
+export default Trending;

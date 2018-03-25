@@ -3,9 +3,10 @@ const nodeExternals = require('webpack-node-externals');
 const rulesMaker = require('./webpack/rules');
 const UglfifyJSPlugin = require('uglifyjs-webpack-plugin');
 const makePluginSet = require('./webpack/plugins');
+const { NODE_ENV, CLIENT_PORT } = require('./config');
 
 const outputPath = path.resolve('./dist');
-const publicPath = process.env.NODE_ENV !== 'production' ? '/public/' : '/public/';
+const publicPath = NODE_ENV !== 'production' ? '/public/' : '/public/';
 const resolve = {
   extensions: ['.js', '.jsx'],
 };
@@ -15,14 +16,12 @@ const clientConfig = {
   entry: {
     bundle: [
       'babel-polyfill',
-      process.env.NODE_ENV !== 'production' &&
-        `webpack-hot-middleware/client?name=client&&path=http://localhost:${
-          process.env.CLIENT_PORT
-        }/__webpack_hmr`,
+      NODE_ENV !== 'production' &&
+        `webpack-hot-middleware/client?name=client&&path=http://localhost:${CLIENT_PORT}/__webpack_hmr`,
       './src/entry/client',
     ].filter(Boolean),
   },
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  mode: NODE_ENV === 'production' ? 'production' : 'development',
   optimization: {
     minimizer: [
       new UglfifyJSPlugin({
@@ -50,14 +49,13 @@ const clientConfig = {
   },
   output: {
     path: outputPath,
-    filename:
-      process.env.NODE_ENV === 'production' ? 'scripts/[name].[chunkHash].js' : 'scripts/[name].js',
+    filename: NODE_ENV === 'production' ? 'scripts/[name].[chunkHash].js' : 'scripts/[name].js',
     publicPath,
     sourceMapFilename: 'sourceMaps/[file].map',
     chunkFilename:
-      process.env.NODE_ENV === 'production' ? 'scripts/[name].[chunkHash].js' : 'scripts/[name].js',
+      NODE_ENV === 'production' ? 'scripts/[name].[chunkHash].js' : 'scripts/[name].js',
   },
-  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
+  devtool: NODE_ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
   module: {
     rules: rulesMaker({ server: false }),
   },
@@ -73,7 +71,7 @@ const serverConfig = {
   entry: {
     server: ['babel-polyfill', './src/server'].filter(Boolean),
   },
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  mode: NODE_ENV === 'production' ? 'production' : 'development',
   output: {
     path: outputPath,
     filename: '[name].js',
@@ -81,7 +79,7 @@ const serverConfig = {
     publicPath,
     sourceMapFilename: 'sourceMaps/[file].map',
   },
-  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
+  devtool: NODE_ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
   module: {
     rules: rulesMaker({ server: true }),
   },

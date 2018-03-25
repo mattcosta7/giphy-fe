@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 import ProgressiveImage from 'react-progressive-image';
 import classnames from 'classnames';
 import Styles from './styles.scss';
 
-export default class Image extends React.Component {
+class Image extends React.Component {
   render() {
     const {
       src, className, alt, placeholder, frameClassName, ...restProps
@@ -36,3 +37,19 @@ export default class Image extends React.Component {
     );
   }
 }
+
+Image.defaultProps = {
+  frameClassName: null,
+  placeholder: null,
+  className: null,
+};
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  alt: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  frameClassName: PropTypes.string,
+};
+
+export default Image;
